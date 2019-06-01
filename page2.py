@@ -15,7 +15,6 @@ class Page2(tk.Frame):
 		tk.Frame.__init__(self, parent)
 		self.creatWidgets()
 
-
 	def creatWidgets(self):
 		'''建立元件'''
 		#格式
@@ -40,6 +39,7 @@ class Page2(tk.Frame):
 		self.droplist2 = tt.Combobox(self, width = 14, values = ["請選擇兌換幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)", "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)", "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"],  font = f2, state = "readonly")
 		self.droplist2.current(0)
 		self.txtlabel2 = tk.Text(self, height = 1, width = 16, font = f2)
+
 		#參考匯率
 		self.labelname2 = tk.Label(self, text = "參考匯率1（外幣：臺幣）", height = 1, width = 20, font = f2)
 		self.labelname3 = tk.Label(self, height = 1, width = 16, font = f2 , bg = "white")
@@ -50,6 +50,15 @@ class Page2(tk.Frame):
 		self.btn2 = tk.Button(self, text = "互換", height = 1, width = 4, font = f2, bg = "Yellow", command = self.clickBtn_change)
 		self.btn3 = tk.Button(self, text = "清除", height = 1, width = 4, font = f2, bg = "Yellow", command = self.clickBtn_clean)
 
+		# 空白行
+		self.blank_r1 = tk.Label(self, height = 1, width = 1)
+		self.blank_r2 = tk.Label(self, height = 1, width = 1)
+		# 空白欄
+		self.blank_c1 = tk.Label(self, height = 1, width = 1)
+		self.blank_c2 = tk.Label(self, height = 1, width = 1)
+		self.blank_c3 = tk.Label(self, height = 1, width = 1)
+		self.blank_c4 = tk.Label(self, height = 1, width = 1)
+		self.blank_c5 = tk.Label(self, height = 1, width = 1)
 
 		'''位置'''
 		#匯率種類
@@ -58,21 +67,27 @@ class Page2(tk.Frame):
 		self.rbutton2.grid(row = 0, column = 4,columnspan = 2, sticky = tk.W)
 		#持有幣別
 		self.rbutton3.grid(row = 1, column = 0, columnspan = 4, sticky = tk.W)
-		self.droplist1.grid(row = 2, column = 0,columnspan = 4, sticky = tk.W)
-		self.txtlabel1.grid(row = 3, column = 0, columnspan = 4, sticky = tk.W)
+		self.blank_c1.grid(row = 2, column = 0)
+		self.droplist1.grid(row = 2, column = 1,columnspan = 4, sticky = tk.W)
+		self.blank_c2.grid(row = 2, column = 0)
+		self.txtlabel1.grid(row = 3, column = 1, columnspan = 4, sticky = tk.W)
 		#兌換幣別
 		self.rbutton4.grid(row = 1, column = 4,columnspan = 4, sticky = tk.W)
-		self.droplist2.grid(row = 2, column = 4, columnspan = 4, sticky = tk.W)
-		self.txtlabel2.grid(row = 3, column = 4, columnspan = 4, sticky = tk.W)
+		self.droplist2.grid(row = 2, column = 5, columnspan = 4, sticky = tk.W)
+		self.txtlabel2.grid(row = 3, column = 5, columnspan = 4, sticky = tk.W)
+		# 控行
+		self.blank_r1.grid(row = 4, column = 0)
 		#參考匯率
-		self.labelname2.grid(row = 4, column = 0, columnspan = 5, sticky = tk.W)
-		self.labelname3.grid(row = 4, column = 4, columnspan = 2, sticky = tk.W)
-		self.labelname4.grid(row = 5, column = 0, columnspan = 5, sticky = tk.W)
-		self.labelname5.grid(row = 5, column = 4, columnspan = 2, sticky = tk.W)
+		self.labelname2.grid(row = 5, column = 0, columnspan = 5, sticky = tk.W)
+		self.labelname3.grid(row = 5, column = 4, columnspan = 2, sticky = tk.W)
+		# 控行
+		self.blank_r2.grid(row = 6, column = 0)
+		self.labelname4.grid(row = 7, column = 0, columnspan = 5, sticky = tk.W)
+		self.labelname5.grid(row = 7, column = 4, columnspan = 2, sticky = tk.W)
 		#按鈕
-		self.btn1.grid(row = 6, column = 0, columnspan = 1, sticky = tk.W)
-		self.btn2.grid(row = 6, column = 1, columnspan = 1, sticky = tk.W)
-		self.btn3.grid(row = 6, column = 2, columnspan = 1, sticky = tk.W)
+		self.btn1.grid(row = 8, column = 0, columnspan = 1, sticky = tk.W)
+		self.btn2.grid(row = 8, column = 1, columnspan = 1, sticky = tk.W)
+		self.btn3.grid(row = 8, column = 2, columnspan = 1, sticky = tk.W)
 
 	def checkMode(self, mode_cacuf, mode_convertf, currency_holdf, currency_convertf):
 		'''檢驗有沒有選模式'''
@@ -127,7 +142,7 @@ class Page2(tk.Frame):
 				elif ctype == "新加坡幣 (SGD)":
 					return float(table.iat[5,1])
 				elif ctype == "瑞士法郎 (CHF)":
-					return ifloat(table.iat[6,1])
+					return float(table.iat[6,1])
 				elif ctype == "日圓 (JPY)":
 					return float(table.iat[7,1])
 				elif ctype == "南非幣 (ZAR)":
@@ -302,7 +317,6 @@ class Page2(tk.Frame):
 			exrate2 = "－"
 		return amount_out, exrate1, exrate2
 
-
 	def convertToHold(self, mode_cacuf2, currency_holdf2, currency_convertf2, amount_in):
 		'''輸入兌換貨幣，計算持有貨幣'''
 		if currency_holdf2 == "新臺幣 (NTD)" and currency_convertf2 != "新臺幣 (NTD)":
@@ -315,7 +329,7 @@ class Page2(tk.Frame):
 		elif currency_holdf2 != "新臺幣 (NTD)" and currency_convertf2 == "新臺幣 (NTD)":
 			cacu_in = mode_cacuf2
 			buysell_in = "本行買入"
-			ctype_in = currency_convertf2
+			ctype_in = currency_holdf2
 			exrate1 = self.getExrate(cacu_in, buysell_in, ctype_in)
 			exrate2 = "－"
 			amount_out = self.equation_1(amount_in, exrate1)
@@ -371,7 +385,6 @@ class Page2(tk.Frame):
 		else:
 			checknum = self.txtlabel2.get("1.0", tk.END)
 		num = self.checkNum(checknum) #驗證輸入的是否為數字
-		self.rich(num) #是否為富豪
 
 		#試算並輸出
 		#金額
@@ -389,6 +402,8 @@ class Page2(tk.Frame):
 			self.labelname5.configure(text = "1：%0.5f" %exrate_2)
 		else:
 			self.labelname5.configure(text = "－")
+
+		self.rich(num) #是否為富豪，先算完再確認
 
 	def clickBtn_change(self):
 		'''按鈕功能-互換'''

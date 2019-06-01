@@ -1,21 +1,12 @@
 import tkinter as tk #視窗
 import tkinter.font as tkFont #字體
 import tkinter.ttk as tt #下拉選單
-import pandas #爬的
 
-from PIL import ImageTk #插圖檔
-import tkinter.messagebox #對話框
-import sys #贊助用
-import webbrowser #贊助用
 
-import matplotlib.pyplot as py #畫圖
-import os
-
+''' 三個子視窗獨立寫出 '''
 from page1 import Page1 as WinOne
 from page2 import Page2 as WinTwo
 from page3 import Page3 as WinThree
-
-LARGE_FONT= ("Verdana", 12)
 
 
 class Projectapp(tk.Tk):
@@ -55,8 +46,6 @@ class Projectapp(tk.Tk):
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-
-
 
 app = Projectapp()
 app.mainloop()
