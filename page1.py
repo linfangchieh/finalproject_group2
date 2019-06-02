@@ -81,7 +81,7 @@ class Page1(tk.Frame):
                                                                 " 人民幣 (CNY) "],  font = f2, state = "readonly")
         self.droplist2.current(0)
         #按鈕
-        self.btn = tk.Button(self, text = "查詢", height = 1, width = 8, font = f2, bg = "Yellow", command = self.clickBtn)
+        self.btn = tk.Button(self, text = "查詢", height = 1, width = 8, font = f2, bg = "gold", command = self.clickBtn)
 
         '''位置'''
         self.labelname.grid(row = 0, column = 0, columnspan = 3, sticky = tk.NW) #查詢匯率
@@ -213,6 +213,8 @@ class Page1(tk.Frame):
         py.plot(date_list, spotbuy_list)
         py.plot(date_list, spotsell_list)
 
+        # py.tight_layout()
+
         py.xlabel("Date")
         py.xticks(rotation=270)
         py.ylabel("Cash Rate")
@@ -297,7 +299,7 @@ class Page1(tk.Frame):
 
 
         '''幣別2'''
-        if (self.droplist2.get() != "請選擇幣別2") and (self.droplist2.get() != self.droplist1.get()):
+        if (self.droplist2.get() != "請選擇幣別2") and (self.droplist2.get() != self.droplist1.get()) and (self.droplist1.get() != "請選擇幣別1"):
             picture = "line2"
             if self.exit2 == 0:
                 self.exit2 = 1
