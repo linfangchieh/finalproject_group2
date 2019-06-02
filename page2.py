@@ -26,10 +26,11 @@ class Page2(tk.Frame):
 
 		'''物件'''
 		#匯率種類
-		self.labelname1 = tk.Label(self, text = "匯率種類：", height = 1, width = 8, font = f2)
+		self.labelname1 = tk.Label(self, text = "**匯率種類**", height = 1, width = 12, font = f2, fg = "SpringGreen4")
 		self.rbuttonl = tk.Radiobutton(self, text = "現金匯率", variable = self.var1, value = "cash", height = 1, width = 8, font = f2)
 		self.rbutton2 = tk.Radiobutton(self, text = "即期匯率", variable = self.var1, value = "current", height = 1, width = 8, font = f2)
 		#持有幣別
+		self.labelname6 = tk.Label(self, text = "**換匯模式**", height = 1, width = 12, font = f2, fg = "SpringGreen4")
 		self.rbutton3 = tk.Radiobutton(self, text = "持有幣別", variable = self.var2, value = "hold", height = 1, width = 12, font = f2)
 		self.droplist1 = tt.Combobox(self, width = 14, values = ["請選擇持有幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)", "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)", "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"],  font = f2, state = "readonly")
 		self.droplist1.current(0)
@@ -39,55 +40,132 @@ class Page2(tk.Frame):
 		self.droplist2 = tt.Combobox(self, width = 14, values = ["請選擇兌換幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)", "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)", "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"],  font = f2, state = "readonly")
 		self.droplist2.current(0)
 		self.txtlabel2 = tk.Text(self, height = 1, width = 16, font = f2)
-
 		#參考匯率
-		self.labelname2 = tk.Label(self, text = "參考匯率1（外幣：臺幣）", height = 1, width = 20, font = f2)
-		self.labelname3 = tk.Label(self, height = 1, width = 16, font = f2 , bg = "white")
-		self.labelname4 = tk.Label(self, text = "參考匯率2（外幣：臺幣）", height = 1, width = 20, font = f2)
-		self.labelname5 = tk.Label(self, height = 1, width = 16, font = f2 , bg = "white")
+		self.labelname7 = tk.Label(self, text = "**參考匯率（外幣：臺幣）**", height = 1, width = 20, font = f2, fg = "SpringGreen4")
+		self.labelname2 = tk.Label(self, text = "匯率1", height = 1, width = 8, font = f2)
+		self.labelname3 = tk.Label(self, height = 1, width = 14, font = f2 , bg = "white")
+		self.labelname4 = tk.Label(self, text = "匯率2", height = 1, width = 8, font = f2)
+		self.labelname5 = tk.Label(self, height = 1, width = 14, font = f2 , bg = "white")
 		#按鈕
-		self.btn1 = tk.Button(self, text = "試算", height = 1, width = 4, font = f2, bg = "Yellow", command = self.clickBtn_convert)
-		self.btn2 = tk.Button(self, text = "互換", height = 1, width = 4, font = f2, bg = "Yellow", command = self.clickBtn_change)
-		self.btn3 = tk.Button(self, text = "清除", height = 1, width = 4, font = f2, bg = "Yellow", command = self.clickBtn_clean)
+		self.btn1 = tk.Button(self, text = "試算", height = 1, width = 4, font = f2, bg = "gold", command = self.clickBtn_convert)
+		self.btn2 = tk.Button(self, text = "互換", height = 1, width = 4, font = f2, bg = "gold", command = self.clickBtn_change)
+		self.btn3 = tk.Button(self, text = "清除", height = 1, width = 4, font = f2, bg = "gold", command = self.clickBtn_clean)
 
-		# 空白行
-		self.blank_r1 = tk.Label(self, height = 1, width = 1)
-		self.blank_r2 = tk.Label(self, height = 1, width = 1)
-		# 空白欄
-		self.blank_c1 = tk.Label(self, height = 1, width = 1)
-		self.blank_c2 = tk.Label(self, height = 1, width = 1)
-		self.blank_c3 = tk.Label(self, height = 1, width = 1)
-		self.blank_c4 = tk.Label(self, height = 1, width = 1)
-		self.blank_c5 = tk.Label(self, height = 1, width = 1)
+		#排版
+		self.blankc0r1 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r2 = tk.Label(self, height = 1, width = 4, font = f2)
+		self.blankc0r4 = tk.Label(self, height = 1, width = 4, font = f2)
+		self.blankc0r5 = tk.Label(self, height = 1, width = 4, font = f2)
+		self.blankc0r6 = tk.Label(self, height = 1, width = 4, font = f2)
+		self.blankc0r7 = tk.Label(self, height = 1, width = 4, font = f2)
+		self.blankc0r10 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r11 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r12 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r13 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r14 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r15 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r16 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r17 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r18 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r19 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r20 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r21 = tk.Label(self, height = 1, width = 7, font = f2)
+		self.blankc0r22 = tk.Label(self, height = 1, width = 7, font = f2)
+
+		self.blankc30r3 = tk.Label(self, text = "|", height = 1, width = 5, font = f2)
+		self.blankc30r4 = tk.Label(self, text = "|", height = 1, width = 5, font = f2)
+		self.blankc30r5 = tk.Label(self, text = "|", height = 1, width = 5, font = f2)
+		self.blankc30r6 = tk.Label(self, text = "|", height = 1, width = 5, font = f2)
+
+		#圖_轉換箭頭
+		self.imagearrow = ImageTk.PhotoImage(file = "./img/arrow1.png")
+		self.labelname_arrow = tk.Label(self, image = self.imagearrow, height = 12, width = 30, font = f2)
+		#圖_右方大圖
+		self.image1 = ImageTk.PhotoImage(file = "./img/exchange2.png")
+		self.label_image = tk.Label(self, image = self.image1, height = 250, width = 255, font = f2)
+
+		#使用說明
+		self.labelname_ins0 = tk.Label(self, text = " ", height = 1, width = 12, font = f2)
+		self.labelname_ins1 = tk.Label(self, text = "**使用說明**", height = 1, width = 12, font = f2, fg = "SpringGreen4")
+		self.labelname_ins2 = tk.Label(self, text = "STEP 1 選擇匯率種類", height = 1, width = 20, font = f2)
+		self.labelname_ins3 = tk.Label(self, text = "STEP 2 選擇換匯模式", height = 1, width = 20, font = f2)
+		self.labelname_ins4 = tk.Label(self, text = "　(1)計算特定金額之持有幣別「能換取多少兌換幣別」", height = 1, width = 42, font = f2)
+		self.labelname_ins5 = tk.Label(self, text = "　　 點選持有幣別，並輸入持有幣別之金額", height = 1, width = 36, font = f2)
+		self.labelname_ins6 = tk.Label(self, text = "　(2)計算欲換取特定金額之兌換幣別「需要準備多少持有幣別」", height = 1, width = 48, font = f2)
+		self.labelname_ins7 = tk.Label(self, text = " 　　點選兌換幣別，並輸入欲兌換多少兌換幣別", height = 1, width = 39, font = f2)
+		self.labelname_ins8 = tk.Label(self, text = "STEP 3 點選按鈕", height = 1, width = 18, font = f2)
+		self.labelname_ins9 = tk.Label(self, text = "　(1)試算：計算出結果與參考匯率", height = 1, width = 29, font = f2)
+		self.labelname_ins10 = tk.Label(self, text = "　(2)互換：轉換至另一換匯模式", height = 1, width = 27, font = f2)
+		self.labelname_ins11 = tk.Label(self, text = "　(3)清除：清除輸入之金額", height = 1, width = 24, font = f2)
+		self.labelname_exc = tk.Label(self, text = "**輸入之外幣←匯率1→新台幣←匯率2→計算之外幣", height = 1, width = 39, font = f2)
 
 		'''位置'''
-		#匯率種類
-		self.labelname1.grid(row = 0, column = 0, columnspan = 2)
-		self.rbuttonl.grid(row = 0, column = 2, columnspan = 2, sticky = tk.W)
-		self.rbutton2.grid(row = 0, column = 4,columnspan = 2, sticky = tk.W)
-		#持有幣別
-		self.rbutton3.grid(row = 1, column = 0, columnspan = 4, sticky = tk.W)
-		self.blank_c1.grid(row = 2, column = 0)
-		self.droplist1.grid(row = 2, column = 1,columnspan = 4, sticky = tk.W)
-		self.blank_c2.grid(row = 2, column = 0)
-		self.txtlabel1.grid(row = 3, column = 1, columnspan = 4, sticky = tk.W)
-		#兌換幣別
-		self.rbutton4.grid(row = 1, column = 4,columnspan = 4, sticky = tk.W)
-		self.droplist2.grid(row = 2, column = 5, columnspan = 4, sticky = tk.W)
-		self.txtlabel2.grid(row = 3, column = 5, columnspan = 4, sticky = tk.W)
-		# 控行
-		self.blank_r1.grid(row = 4, column = 0)
-		#參考匯率
-		self.labelname2.grid(row = 5, column = 0, columnspan = 5, sticky = tk.W)
-		self.labelname3.grid(row = 5, column = 4, columnspan = 2, sticky = tk.W)
-		# 控行
-		self.blank_r2.grid(row = 6, column = 0)
-		self.labelname4.grid(row = 7, column = 0, columnspan = 5, sticky = tk.W)
-		self.labelname5.grid(row = 7, column = 4, columnspan = 2, sticky = tk.W)
-		#按鈕
-		self.btn1.grid(row = 8, column = 0, columnspan = 1, sticky = tk.W)
-		self.btn2.grid(row = 8, column = 1, columnspan = 1, sticky = tk.W)
-		self.btn3.grid(row = 8, column = 2, columnspan = 1, sticky = tk.W)
+		self.labelname1.grid(row = 0, column = 4, columnspan = 12, sticky = tk.W) #匯率種類
+		self.rbuttonl.grid(row = 1, column = 7, columnspan = 8, sticky = tk.W) #現金匯率
+		self.rbutton2.grid(row = 1, column = 17,columnspan = 8, sticky = tk.W) #即期匯率
+
+		self.labelname6.grid(row = 2, column = 4, columnspan = 12, sticky = tk.W) #換匯模式
+		self.rbutton3.grid(row = 3, column = 6, columnspan = 12, sticky = tk.W) #持有幣別-單選
+		self.droplist1.grid(row = 4, column = 6,columnspan = 14, sticky = tk.W) #持有幣別-下拉選單
+		self.txtlabel1.grid(row = 5, column = 6, columnspan = 16, sticky = tk.W) #持有幣別-金額
+
+		self.rbutton4.grid(row = 3, column = 24,columnspan = 12, sticky = tk.W)  #兌換幣別-單選
+		self.droplist2.grid(row = 4, column = 24, columnspan = 19, sticky = tk.W) #兌換幣別-下拉選單
+		self.txtlabel2.grid(row = 5, column = 24, columnspan = 20, sticky = tk.W) #兌換幣別-金額
+
+		self.labelname7.grid(row = 2, column = 57, columnspan = 21, sticky = tk.W) #參考匯率
+		self.labelname2.grid(row = 4, column = 55, columnspan = 8, sticky = tk.W) #匯率1
+		self.labelname3.grid(row = 4, column = 63, columnspan = 14, sticky = tk.W) #參考匯率1-顯示
+		self.labelname4.grid(row = 5, column = 55, columnspan = 8, sticky = tk.W) #匯率2
+		self.labelname5.grid(row = 5, column = 63, columnspan = 14, sticky = tk.W) #參考匯率2-顯示
+
+		self.btn1.grid(row = 7, column = 6, columnspan = 4, sticky = tk.W) #按鈕-試算
+		self.btn2.grid(row = 7, column = 11, columnspan = 4, sticky = tk.W) #按鈕-互換
+		self.btn3.grid(row = 7, column = 16, columnspan = 5, sticky = tk.W) #按鈕-清除
+
+		#排版
+		self.blankc0r1.grid(row = 1, column = 0, columnspan = 7)
+		self.blankc0r2.grid(row = 4, column = 0, columnspan = 4)
+		self.blankc0r4.grid(row = 5, column = 0, columnspan = 4)
+		self.blankc0r5.grid(row = 6, column = 0, columnspan = 4)
+		self.blankc0r6.grid(row = 7, column = 0, columnspan = 4)
+
+		self.blankc0r10.grid(row = 11, column = 0, columnspan = 7)
+		self.blankc0r11.grid(row = 12, column = 0, columnspan = 7)
+		self.blankc0r12.grid(row = 13, column = 0, columnspan = 7)
+		self.blankc0r13.grid(row = 14, column = 0, columnspan = 7)
+		self.blankc0r14.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r15.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r16.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r17.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r18.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r19.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r20.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r21.grid(row = 15, column = 0, columnspan = 7)
+		self.blankc0r22.grid(row = 15, column = 0, columnspan = 7)
+
+		self.blankc30r3.grid(row = 2, column = 48, columnspan = 5)
+		self.blankc30r4.grid(row = 3, column = 48, columnspan = 5)
+		self.blankc30r5.grid(row = 4, column = 48, columnspan = 5)
+		self.blankc30r6.grid(row = 5, column = 48, columnspan = 5)
+
+		self.labelname_arrow.grid(row = 5, column = 14, columnspan = 15) #圖_箭頭
+		self.label_image.grid(row = 10, column = 55, rowspan = 255, columnspan = 255) #右方大圖
+
+		#使用說明
+		self.labelname_ins0.grid(row = 10, column = 4, columnspan = 12, sticky = tk.W)
+		self.labelname_ins1.grid(row = 11, column = 4, columnspan = 12, sticky = tk.W)
+		self.labelname_ins2.grid(row = 12, column = 4, columnspan = 20, sticky = tk.W)
+		self.labelname_ins3.grid(row = 13, column = 4, columnspan = 20, sticky = tk.W)
+		self.labelname_ins4.grid(row = 14, column = 4, columnspan = 50, sticky = tk.W)
+		self.labelname_ins5.grid(row = 15, column = 4, columnspan = 50, sticky = tk.W)
+		self.labelname_ins6.grid(row = 16, column = 4, columnspan = 50, sticky = tk.W)
+		self.labelname_ins7.grid(row = 17, column = 4, columnspan = 50, sticky = tk.W)
+		self.labelname_ins8.grid(row = 18, column = 4, columnspan = 20, sticky = tk.W)
+		self.labelname_ins9.grid(row = 19, column = 4, columnspan = 30, sticky = tk.W)
+		self.labelname_ins10.grid(row = 20, column = 4, columnspan = 30, sticky = tk.W)
+		self.labelname_ins11.grid(row = 21, column = 4, columnspan = 30, sticky = tk.W)
+		self.labelname_exc.grid(row = 22, column = 4, columnspan = 50, sticky = tk.W)
 
 	def checkMode(self, mode_cacuf, mode_convertf, currency_holdf, currency_convertf):
 		'''檢驗有沒有選模式'''
@@ -109,19 +187,26 @@ class Page2(tk.Frame):
 			self.txtlabel1.delete("1.0", tk.END)
 			self.txtlabel2.delete("1.0", tk.END)
 
+	def creatWindow(self, myTitle):
+		'''贊助視窗'''
+		self.top = tkinter.Toplevel(self)
+		self.top.title(myTitle)
+		self.top.attributes('-topmost', 1)
+
+		window1 = tk.IntVar(self, value = 0)
+		self.imagedonate = ImageTk.PhotoImage(file = "./img/donate.jpg")
+		labeldonate = tk.Label(self.top, image = self.imagedonate, height = 500, width = 500)
+		labeldonate.grid(row = 0, column = 0, columnspan = 4, sticky = tk.W)
+
 	def rich(self, numrich):
 		'''是否為富豪用戶'''
 		if numrich >= 1000000:
 			yesno = tkinter.messagebox.askyesno(title = "大大請贊助", message = "喜歡我們的程式嗎\n除了去修商管程式設計外\n請贊助我們:)")
 
 			if yesno == True:
-				img = Image.open('./donate.jpg')
-				plt.figure("請掃描QRcode來贊助我們哦❤", figsize=(5,5))
-				plt.imshow(img)
-				plt.axis("off")
-				plt.show()
+				window_donate = self.creatWindow("請掃描QRcode來贊助我們哦❤")
 			else:
-				tkinter.messagebox.showinfo(title = "期待你成為我們的乾爹/乾媽", message = "我們會繼續努力！")
+				tkinter.messagebox.showinfo(title = "我們會繼續努力！", message = "期待你成為我們的乾爹/乾媽")
 
 	def getExrate(self, cacu, buysell, ctype):
 		'''爬匯率'''
@@ -317,6 +402,7 @@ class Page2(tk.Frame):
 			exrate2 = "－"
 		return amount_out, exrate1, exrate2
 
+
 	def convertToHold(self, mode_cacuf2, currency_holdf2, currency_convertf2, amount_in):
 		'''輸入兌換貨幣，計算持有貨幣'''
 		if currency_holdf2 == "新臺幣 (NTD)" and currency_convertf2 != "新臺幣 (NTD)":
@@ -385,6 +471,7 @@ class Page2(tk.Frame):
 		else:
 			checknum = self.txtlabel2.get("1.0", tk.END)
 		num = self.checkNum(checknum) #驗證輸入的是否為數字
+		self.rich(num) #是否為富豪
 
 		#試算並輸出
 		#金額
@@ -402,8 +489,6 @@ class Page2(tk.Frame):
 			self.labelname5.configure(text = "1：%0.5f" %exrate_2)
 		else:
 			self.labelname5.configure(text = "－")
-
-		self.rich(num) #是否為富豪，先算完再確認
 
 	def clickBtn_change(self):
 		'''按鈕功能-互換'''

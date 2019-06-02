@@ -48,4 +48,6 @@ class Projectapp(tk.Tk):
         frame.tkraise()
 
 app = Projectapp()
+app.iconbitmap('./img/notes.ico')
+app.title('小傑換錢給小銘')
 app.mainloop()
