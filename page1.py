@@ -192,7 +192,13 @@ class Page1(tk.Frame):
                          "Spot Rate - Buying", "Spot Rate - Selling"]
         money["Currency"] = money["Currency"].str.extract("\((\w+)\)")    #https://ithelp.ithome.com.tw/articles/10194954
 
-        x = sorted(money["Quoted Date"].tolist())[0::10]
+        x = sorted(money["Quoted Date"].tolist())[-1:: -10]
+        x = x[:: -1]
+        '''
+        for t in range(len(x)):
+            y = x[t]
+            x[t] = y[5:]
+        '''
 
         money.sort_values("Quoted Date") #把資料按照時間排序
 
@@ -208,9 +214,10 @@ class Page1(tk.Frame):
         py.plot(date_list, spotsell_list)
 
         py.xlabel("Date")
-        py.xticks(rotation=90)
+        py.xticks(rotation=270)
         py.ylabel("Cash Rate")
         py.xticks(x)
+        py.tight_layout()
         py.savefig(self.picturename + ".png")
 
     def clickBtn(self):
@@ -225,6 +232,7 @@ class Page1(tk.Frame):
             self.txtlabel7.configure(text = "")
             self.txtlabel8.configure(text = "")
             tkinter.messagebox.showerror(title = "未選擇模式", message = "沒選擇幣別1啦!")
+
         else:
             table_web = self.bank()
             currency1_choose  =  self.droplist1.get() #幣別1
@@ -275,8 +283,17 @@ class Page1(tk.Frame):
             os.system("del line1.png")
 
         else:
-            if self.exit1 != 0:
+            if self.exit1 != 0 and self.exit2 == 0:
                 self.cvsMain1.delete(self.image1)
+                print(1)
+            elif self.exit1 != 0 and self.exit2 != 0:
+                self.cvsMain1.delete(self.image1)
+                self.cvsMain2.delete(self.image2)
+                print(2)
+            #if self.exit1 == 0 and self.exit2 == 0:
+                #不做任何事
+            elif self.exit1 == 0 and self.exit2 != 0:
+                self.cvsMain2.delete(self.image2)
 
 
         '''幣別2'''
