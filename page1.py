@@ -21,10 +21,10 @@ class Page1(tk.Frame):
         f2 = tkFont.Font(size = 12, family = "微軟正黑體")
         f3 = tkFont.Font(size = 8, family = "微軟正黑體")
         f4 = tkFont.Font(size = 3, family = "微軟正黑體")
-        f5 = tkFont.Font(size = 1, family = "微軟正黑體")
+  
         '''物件'''
         #文字方塊-標題文字
-        self.labelname = tk.Label(self, text = " **匯率查詢** ", height = 1, width = 10, font = f2)
+        self.labelname = tk.Label(self, text = " **匯率查詢** ", height = 1, width = 10, font = f2, fg = "SpringGreen4")
         #文字方塊-幣別1
         self.labelname1_1 = tk.Label(self, text = " (必選)* ", height = 1, width = 5, font = f2, fg = "red")
         self.sublabel1 = tk.Label(self, text = " 現金匯率 ", height = 1, width = 10, font = f2)
@@ -45,7 +45,7 @@ class Page1(tk.Frame):
         self.txtlabel7 = tk.Label(self, height = 1, width = 10, font = f2, bg = "white")
         self.txtlabel8 = tk.Label(self, height = 1, width = 10, font = f2, bg = "white")
         #文字方塊-走勢圖
-        self.figurename = tk.Label(self, text = " 近三個月匯率走勢圖 ", height = 1, width = 15, font = f2)
+        self.figurename = tk.Label(self, text = " **近三個月匯率走勢圖** ", height = 1, width = 18, font = f2,  fg = "SpringGreen4")
         self.lengendname1 = tk.Label(self, text = "現金匯率-銀行買入", fg = "DodgerBlue3")
         self.lengendname2 = tk.Label(self, text = "現金匯率-銀行賣出", fg = "dark orange")
         self.lengendname3 = tk.Label(self, text = "即期匯率-銀行買入", fg = "green4")
@@ -184,7 +184,6 @@ class Page1(tk.Frame):
         self.picturename = str(picturename)
         py.figure()
         self.money = money
-        print(self.money)
         dfs = pandas.read_html("https://rate.bot.com.tw/xrt/quote/ltm/" + self.money)
         money = dfs[0]
         money = money.iloc[:, 0:6]
@@ -194,6 +193,7 @@ class Page1(tk.Frame):
 
         x = sorted(money["Quoted Date"].tolist())[-1:: -10]
         x = x[:: -1]
+		
         '''
         for t in range(len(x)):
             y = x[t]
@@ -212,11 +212,9 @@ class Page1(tk.Frame):
         py.plot(date_list, cashsell_list)
         py.plot(date_list, spotbuy_list)
         py.plot(date_list, spotsell_list)
-
-        # py.tight_layout()
-
+        
         py.xlabel("Date")
-        py.xticks(rotation=270)
+        py.xticks(rotation = 270)
         py.ylabel("Cash Rate")
         py.xticks(x)
         py.tight_layout()
@@ -269,8 +267,7 @@ class Page1(tk.Frame):
                 self.txtlabel8.configure(text = "")
 
         '''按鈕功能-顯示匯率走勢圖'''
-        '''幣別1'''
-        if self.droplist1.get() != "請選擇幣別1":
+        if self.droplist1.get() != "請選擇幣別1": #幣別1
             picture = "line1"
             if self.exit1 == 0:
                 self.exit1 = 1
@@ -281,25 +278,19 @@ class Page1(tk.Frame):
             self.makeLinechart(money1, picture)
 
             self.imageMain1 = ImageTk.PhotoImage(file = picture + ".png")
-            self.image1 = self.cvsMain1.create_image(200, 200, image = self.imageMain1)
-            os.system("del line1.png")
+            self.image1 = self.cvsMain1.create_image(200, 200, image = self.imageMain1, anchor = tk.CENTER)
+            os.system("del line1.png") #刪除存檔
 
         else:
             if self.exit1 != 0 and self.exit2 == 0:
                 self.cvsMain1.delete(self.image1)
-                print(1)
             elif self.exit1 != 0 and self.exit2 != 0:
                 self.cvsMain1.delete(self.image1)
                 self.cvsMain2.delete(self.image2)
-                print(2)
-            #if self.exit1 == 0 and self.exit2 == 0:
-                #不做任何事
             elif self.exit1 == 0 and self.exit2 != 0:
                 self.cvsMain2.delete(self.image2)
 
-
-        '''幣別2'''
-        if (self.droplist2.get() != "請選擇幣別2") and (self.droplist2.get() != self.droplist1.get()) and (self.droplist1.get() != "請選擇幣別1"):
+        if (self.droplist2.get() != "請選擇幣別2") and (self.droplist2.get() != self.droplist1.get()) and (self.droplist1.get() != "請選擇幣別1"): #幣別2
             picture = "line2"
             if self.exit2 == 0:
                 self.exit2 = 1
@@ -310,12 +301,12 @@ class Page1(tk.Frame):
             self.makeLinechart(money2, picture)
 
             self.imageMain2 = ImageTk.PhotoImage(file = picture + ".png")
-            self.image2 = self.cvsMain2.create_image(200, 200, image = self.imageMain2)
-            os.system("del line1.png")
+            self.image2 = self.cvsMain2.create_image(200, 200, image = self.imageMain2, anchor = tk.CENTER)
+            os.system("del line2.png")
 
         elif (self.droplist2.get() != "請選擇幣別2") and (self.droplist2.get() == self.droplist1.get()):
             self.cvsMain2.delete(self.image2)
 
         elif (self.droplist2.get() == "請選擇幣別2"):
             if self.exit2 != 0:
-                self.cvsMain2.delete(self.image2)
+                self.cvsMain2.delete(self.image2) #刪除存檔

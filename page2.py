@@ -32,12 +32,20 @@ class Page2(tk.Frame):
 		#持有幣別
 		self.labelname6 = tk.Label(self, text = "**換匯模式**", height = 1, width = 12, font = f2, fg = "SpringGreen4")
 		self.rbutton3 = tk.Radiobutton(self, text = "持有幣別", variable = self.var2, value = "hold", height = 1, width = 12, font = f2)
-		self.droplist1 = tt.Combobox(self, width = 14, values = ["請選擇持有幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)", "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)", "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"],  font = f2, state = "readonly")
+		self.droplist1 = tt.Combobox(self, width = 14, values = ["請選擇持有幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)",
+		                                                         "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)",
+																 "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)",
+																 "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"], 
+																 font = f2, state = "readonly")
 		self.droplist1.current(0)
 		self.txtlabel1 = tk.Text(self, height = 1, width = 16, font = f2)
 		#兌換幣別
 		self.rbutton4 = tk.Radiobutton(self, text = "兌換幣別", variable = self.var2, value = "convert", height = 1, width = 12, font = f2)
-		self.droplist2 = tt.Combobox(self, width = 14, values = ["請選擇兌換幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)", "澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)", "南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)", "印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"],  font = f2, state = "readonly")
+		self.droplist2 = tt.Combobox(self, width = 14, values = ["請選擇兌換幣別", "新臺幣 (NTD)", "美金 (USD)", "港幣 (HKD)", "英鎊 (GBP)",
+																"澳幣 (AUD)", "加拿大幣 (CAD)", "新加坡幣 (SGD)", "瑞士法郎 (CHF)", "日圓 (JPY)",
+																"南非幣 (ZAR)", "瑞典幣 (SEK)", "紐元 (NZD)", "泰幣 (THB)", "菲國比索 (PHP)",
+																"印尼幣 (IDR)", "歐元 (EUR)", "韓元 (KRW)", "越南盾 (VND)", "馬來幣 (MYR)", "人民幣 (CNY)"], 
+																font = f2, state = "readonly")
 		self.droplist2.current(0)
 		self.txtlabel2 = tk.Text(self, height = 1, width = 16, font = f2)
 		#參考匯率
