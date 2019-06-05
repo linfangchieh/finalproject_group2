@@ -49,5 +49,5 @@ class Projectapp(tk.Tk):
 
 app = Projectapp()
 app.iconbitmap('./img/notes.ico')
-app.title('小傑換錢給小銘')
+app.title('小傑換錢給小盧')
 app.mainloop()
