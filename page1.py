@@ -218,7 +218,7 @@ class Page1(tk.Frame):
         py.ylabel("Cash Rate")
         py.xticks(x)
         py.tight_layout()
-        py.savefig(self.picturename + ".png")
+        py.savefig(self.picturename + ".png", dpi = 64)
 
     def clickBtn(self):
         '''按鈕功能-顯示匯率'''
