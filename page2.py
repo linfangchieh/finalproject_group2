@@ -4,9 +4,6 @@ import tkinter.ttk as tt #下拉選單
 from PIL import ImageTk, Image #插圖檔
 import tkinter.messagebox #對話框
 import pandas #爬的
-import sys #贊助用
-import webbrowser #贊助用
-import matplotlib.pyplot as plt
 
 class Page2(tk.Frame):
 
