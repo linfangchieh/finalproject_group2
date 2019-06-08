@@ -438,7 +438,7 @@ class Page2(tk.Frame):
 			amount_out = self.equation_3(amount_in, exrate1, exrate2)
 		elif currency_holdf2 == currency_convertf2:
 			amount_out = amount_in
-			exrate = "－"
+			exrate1 = "－"
 			exrate2 = "－"
 		return amount_out, exrate1, exrate2
 
@@ -492,7 +492,10 @@ class Page2(tk.Frame):
 			self.txtlabel1.delete("1.0", tk.END)
 			self.txtlabel1.insert("1.0", "%0.4f" %displaynum)
 		#匯率
-		self.labelname3.configure(text = "1：%0.5f" %exrate_1)
+		if exrate_1 != "－":
+			self.labelname3.configure(text = "1：%0.5f" %exrate_1)
+		else:
+			self.labelname3.configure(text = "－")
 		if exrate_2 != "－":
 			self.labelname5.configure(text = "1：%0.5f" %exrate_2)
 		else:

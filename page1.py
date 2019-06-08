@@ -21,7 +21,7 @@ class Page1(tk.Frame):
         f2 = tkFont.Font(size = 12, family = "微軟正黑體")
         f3 = tkFont.Font(size = 8, family = "微軟正黑體")
         f4 = tkFont.Font(size = 3, family = "微軟正黑體")
-  
+
         '''物件'''
         #文字方塊-標題文字
         self.labelname = tk.Label(self, text = " **匯率查詢** ", height = 1, width = 10, font = f2, fg = "SpringGreen4")
@@ -193,13 +193,6 @@ class Page1(tk.Frame):
 
         x = sorted(money["Quoted Date"].tolist())[-1:: -10]
         x = x[:: -1]
-		
-        '''
-        for t in range(len(x)):
-            y = x[t]
-            x[t] = y[5:]
-        '''
-
         money.sort_values("Quoted Date") #把資料按照時間排序
 
         date_list = money["Quoted Date"]
@@ -212,13 +205,18 @@ class Page1(tk.Frame):
         py.plot(date_list, cashsell_list)
         py.plot(date_list, spotbuy_list)
         py.plot(date_list, spotsell_list)
-        
+
         py.xlabel("Date")
         py.xticks(rotation = 270)
         py.ylabel("Cash Rate")
         py.xticks(x)
         py.tight_layout()
-        py.savefig(self.picturename + ".png", dpi = 64)
+
+        # 把x軸設成按照時間先後順序
+        ax = py.gca()
+        ax.invert_xaxis()
+
+        py.savefig(self.picturename + ".png", dpi=64)
 
     def clickBtn(self):
         '''按鈕功能-顯示匯率'''
