@@ -17,10 +17,10 @@ class Page1(tk.Frame):
     def creatWidgets(self):
         '''建立元件'''
         #格式
-        f1 = tkFont.Font(size = 15, family = "Consolas")
-        f2 = tkFont.Font(size = 12, family = "微軟正黑體")
-        f3 = tkFont.Font(size = 8, family = "微軟正黑體")
-        f4 = tkFont.Font(size = 3, family = "微軟正黑體")
+        f1 = tkFont.Font(size = 15, family = "Consolas", weight=tkFont.BOLD)
+        f2 = tkFont.Font(size = 12, family = "微軟正黑體", weight=tkFont.BOLD)
+        f3 = tkFont.Font(size = 8, family = "微軟正黑體", weight=tkFont.BOLD)
+        f4 = tkFont.Font(size = 3, family = "微軟正黑體", weight=tkFont.BOLD)
 
         '''物件'''
         #文字方塊-標題文字

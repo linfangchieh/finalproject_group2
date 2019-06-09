@@ -15,8 +15,8 @@ class Page2(tk.Frame):
 	def creatWidgets(self):
 		'''建立元件'''
 		#格式
-		f1 = tkFont.Font(size = 15, family = "Consolas")
-		f2 = tkFont.Font(size = 12, family = "微軟正黑體")
+		f1 = tkFont.Font(size = 15, family = "Consolas", weight=tkFont.BOLD)
+		f2 = tkFont.Font(size = 12, family = "微軟正黑體", weight=tkFont.BOLD)
 
 		self.var1 = tk.StringVar(None, " ")
 		self.var2 = tk.StringVar(None, " ")

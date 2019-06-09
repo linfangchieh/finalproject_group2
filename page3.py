@@ -46,13 +46,14 @@ class Page3(tk.Frame):
 		
 		#設定第二部分：輸入目標幣別，並設定相關位置
 		self.secondpart1 = tk.Label(self, text = "目標幣別：", height = 1, width = 15, font = f1)
-		self.secondpart2 = tt.Combobox(self,  values = [" 美金 (USD) ", " 港幣 (HKD) ", " 英鎊 (GBP) ",
+		self.secondpart2 = tt.Combobox(self,  values = [" 請選擇目標幣別 ", " 美金 (USD) ", " 港幣 (HKD) ", " 英鎊 (GBP) ",
 														" 澳幣 (AUD) ", " 加拿大幣 (CAD) ", " 新加坡幣 (SGD) ",
 														" 瑞士法郎 (CHF) ", " 日圓 (JPY) ", " 南非幣 (ZAR) ",
 														" 瑞典幣 (SEK) ", " 紐元 (NZD) ", " 泰幣 (THB) ",
 														" 菲國比索 (PHP) ", " 印尼幣 (IDR) ", " 歐元 (EUR) ",
 														" 韓元 (KRW) ", " 越南盾 (VND) ", " 馬來幣 (MYR) ",
-														" 人民幣 (CNY) "], height = 10, width = 40, font = f1)		
+														" 人民幣 (CNY) " ], state = "readonly", height = 10, width = 40, font = f1)		
+		self.secondpart2.current(0)
 		self.secondpart3 = tk.Label(self, height = 1, width = 15, font = f1) #排版用
 		self.secondpart1.grid(row = 2, column = 0, columnspan = 1)
 		self.secondpart2.grid(row = 2, column = 1, columnspan = 2)
@@ -160,7 +161,7 @@ class Page3(tk.Frame):
 				#若Gmail輸入正確，則檢測是否有選擇幣別
 				else:
 					#若沒選擇幣別，則跳出警示視窗
-					if self.secondpart2.get() == "" :
+					if self.secondpart2.get() == " 請選擇目標幣別 " :
 						tkinter.messagebox.showinfo(title='Ooooooops!', message='選一下目標幣別啦!')
 						return None
 					#若有選擇幣別，則檢測是否有選擇匯率種類
